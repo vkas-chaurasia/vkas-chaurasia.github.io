@@ -6,6 +6,21 @@
     --text-muted: #666666;
     --accent-blue: #1794e7;
     --border-color: #eeeeee;
+    --navbar-bg: rgba(255, 255, 255, 0.95);
+    --card-bg: #ffffff;
+    --card-hover-bg: #fafafa;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #0a0a0a;
+    --text-primary: #ffffff;
+    --text-secondary: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --accent-blue: #4dabf7;
+    --border-color: #333333;
+    --navbar-bg: rgba(10, 10, 10, 0.95);
+    --card-bg: #1a1a1a;
+    --card-hover-bg: #252525;
 }
 
 /* =========================================
@@ -23,6 +38,7 @@ body {
     background-color: var(--bg-primary);
     line-height: 1.5;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -52,10 +68,11 @@ h3 {
 .navbar {
     position: sticky;
     top: 0;
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--navbar-bg);
     border-bottom: 1px solid var(--border-color);
     height: 56px;
     z-index: 1000;
+    transition: background 0.3s ease, border-bottom 0.3s ease;
 }
 
 .nav-container {
@@ -94,6 +111,39 @@ h3 {
 /* =========================================
    Main Content
    ========================================= */
+/* =========================================
+   Theme Toggle
+   ========================================= */
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+    margin-left: 15px;
+}
+
+.theme-toggle:hover {
+    color: var(--accent-blue);
+}
+
+.theme-toggle .fa-sun {
+    display: none;
+}
+
+[data-theme="dark"] .theme-toggle .fa-moon {
+    display: none;
+}
+
+[data-theme="dark"] .theme-toggle .fa-sun {
+    display: inline-block;
+}
+
 main {
     padding: 60px 0;
 }
@@ -150,13 +200,13 @@ main {
 .profile-icon {
     width: 200px;
     height: 250px;
-    background: #f8f9fa;
+    background: var(--card-bg);
     border: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 5rem;
-    color: #dee2e6;
+    color: var(--text-muted);
     border-radius: 4px;
 }
 
@@ -238,7 +288,7 @@ main {
     filter: grayscale(20%);
     transition: filter 0.3s ease;
     border: 1px solid var(--border-color);
-    background: #fcfcfc;
+    background: var(--card-bg);
 }
 
 .hero-hobby-img:hover {
@@ -257,6 +307,7 @@ main {
 
 .project-card {
     border: 1px solid var(--border-color);
+    background: var(--card-bg);
     padding: 20px;
     border-radius: 4px;
     transition: all 0.2s ease;
@@ -266,7 +317,7 @@ main {
 
 .project-card:hover {
     border-color: var(--accent-blue);
-    background: #fafafa;
+    background: var(--card-hover-bg);
 }
 
 .project-card .entry-title {
